@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(156, 209, 167);
+    display: flex;
+    flex-direction: column; /* Adjusted to allow stacking of elements vertically */
+    justify-content: flex-start; /* Aligns content at the top */
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+.titletext {
+    text-align: center;
+    background-color: rgb(156, 209, 167);;
+    color: black;
+    padding: 20px 0;
+    position: sticky; /* Keeps it visible at the top when scrolling */
+    top: 0;
+    z-index: 10; /* Ensures it stays above other content */
+    
+    width: 100%; /* Ensures it spans the entire width */
+}
+
+.outer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto; /* Adds spacing below the titletext */
+}
+
+.layout {
+    flex: 1; /* Equal space for each layout */
+    max-width: 45%; /* Ensure the layouts don't exceed half the width */
+    margin: 0 2%; /* Add spacing between the two layouts */
+}
+
+.container {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.row.top {
+    justify-content: center;
+}
+
+.textbox {
+    width: 100%;
+    max-width: 150px;
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.credits {
+    margin: 0;
+    position: absolute; /* Ensures it's at the bottom of the viewport */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ensures it spans the entire width of the screen */
+    text-align: center; /* Centers the text horizontally */
+    font-size: small; /* Keeps the font size small but readable */
+    padding: 10px 0; /* Adds padding for spacing */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Light background to distinguish */
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+p {
+    position: absolute;
+    bottom: 0; /* Align to the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust horizontal alignment */
+    font-size: small;
+}
