@@ -130,12 +130,12 @@ function CalculateCurrentBookCost() {
     CurrentScrapCost = CurrentScrapLevel + CurrentScrapLevel + 2;
 
     //displays the output for testing purposes
-    document.getElementById("output2").textContent = "magnet level costs " + CurrentMagnetCost + ",       ,";
-    document.getElementById("output4").textContent = "gs level costs " + CurrentGoldenScrapCost + ",       ,";
-    document.getElementById("output6").textContent = "fragment level costs " + CurrentStarFragmentCost + ",       ,";
-    document.getElementById("output8").textContent = "xp level costs " + CurrentXpCost + ",       ,";
-    document.getElementById("output10").textContent = " wrench level costs " + CurrentWrenchCost + ",       ,";
-    document.getElementById("output12").textContent = " scraplevel costs " + CurrentScrapCost + ",       ,";
+    document.getElementById("output2").textContent = "Magnet level cost = " + CurrentMagnetCost ;
+    document.getElementById("output4").textContent = "Gs level cost = " + CurrentGoldenScrapCost ;
+    document.getElementById("output6").textContent = "Fragment level cost = " + CurrentStarFragmentCost ;
+    document.getElementById("output8").textContent = "Xp level cost = " + CurrentXpCost;
+    document.getElementById("output10").textContent = "Wrench level cost = " + CurrentWrenchCost;
+    document.getElementById("output12").textContent = "Scrap level cost = " + CurrentScrapCost;
 
     // Calculates the total cost of all previous current levels
     let CurrentTotalMagnet = 0;
@@ -165,21 +165,34 @@ function CalculateCurrentBookCost() {
     }
 
     //displays the output for testing purposes
-    document.getElementById("output3").textContent = `Total Books it took to get to your magnet level = ${Math.floor(CurrentTotalMagnet - CurrentMagnetCost).toLocaleString()}`;
-    document.getElementById("output5").textContent = `Total Books it took to get to your gs level = ${Math.floor(CurrentTotalGoldenScrap - CurrentGoldenScrapCost).toLocaleString()}`;
-    document.getElementById("output7").textContent = `Total Books it took to get to your frag level = ${Math.floor(CurrentTotalStarFragment - CurrentStarFragmentCost).toLocaleString()}`;
-    document.getElementById("output9").textContent = `Total Books it took to get to your xp level = ${Math.floor(CurrentTotalXp - CurrentXpCost).toLocaleString()}`;
-    document.getElementById("output11").textContent = `Total Books it took to get to your wrench level = ${Math.floor(CurrentTotalWrench - CurrentWrenchCost).toLocaleString()}`;
-    document.getElementById("output13").textContent = `Total Books it took to get to your scrap level = ${Math.floor(CurrentTotalScrap - CurrentScrapCost).toLocaleString()}`;
+    document.getElementById("output3").textContent = `Total Books to get to your Magnet level = ${Math.floor(CurrentTotalMagnet - CurrentMagnetCost).toLocaleString()}`;
+    document.getElementById("output5").textContent = `Total Books to get to your Gs level = ${Math.floor(CurrentTotalGoldenScrap - CurrentGoldenScrapCost).toLocaleString()}`;
+    document.getElementById("output7").textContent = `Total Books to get to your Fragment level = ${Math.floor(CurrentTotalStarFragment - CurrentStarFragmentCost).toLocaleString()}`;
+    document.getElementById("output9").textContent = `Total Books to get to your Xp level = ${Math.floor(CurrentTotalXp - CurrentXpCost).toLocaleString()}`;
+    document.getElementById("output11").textContent = `Total Books to get to your Wrench level = ${Math.floor(CurrentTotalWrench - CurrentWrenchCost).toLocaleString()}`;
+    document.getElementById("output13").textContent = `Total Books to get to your Scrap level = ${Math.floor(CurrentTotalScrap - CurrentScrapCost).toLocaleString()}`;
 
-
-    let CurrentTotalBooks = 0;
+    // calculates total books earnt
+    let CurrentTotalBooksEarnt = 0;
 
     for (let j = 0; j <= CurrentQuestLevel; j++) {
-        CurrentTotalBooks += j ;
+        CurrentTotalBooksEarnt += j ;
     }
-    document.getElementById("output14").textContent = `Total Books earnt ever = ${Math.floor(CurrentTotalBooks).toLocaleString()}`;
+    document.getElementById("output14").textContent = `Total Books Earnt Ever = ${Math.floor(CurrentTotalBooksEarnt).toLocaleString()}`;
 
+
+    let CurrentTotalBooksSpent;
+
+    CurrentTotalBooksSpent = 
+    ((CurrentTotalGoldenScrap || 0) - (CurrentGoldenScrapCost || 0)) +
+    ((CurrentTotalMagnet || 0) - (CurrentMagnetCost || 0)) +
+    ((CurrentTotalStarFragment || 0) - (CurrentStarFragmentCost || 0)) +
+    ((CurrentTotalXp || 0) - (CurrentXpCost || 0)) +
+    ((CurrentTotalWrench || 0) - (CurrentWrenchCost || 0)) +
+    ((CurrentTotalScrap || 0) - (CurrentScrapCost || 0));
+    document.getElementById("output15").textContent = `Total Books spent Ever = ${Math.floor(CurrentTotalBooksSpent).toLocaleString()}`;
+
+    document.getElementById("output16").textContent = `Extra Books:  ${Math.floor(CurrentTotalBooksEarnt-CurrentTotalBooksSpent).toLocaleString()}`;
 
 
 }
